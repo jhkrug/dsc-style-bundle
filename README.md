@@ -1,4 +1,3 @@
-
 # Antora Playbook with Default Theme and Product-Specific Supplemental Files
 
 This repository demonstrates how to set up an Antora documentation site using the default D.S.C theme style bundle and additional product-specific supplemental files.
