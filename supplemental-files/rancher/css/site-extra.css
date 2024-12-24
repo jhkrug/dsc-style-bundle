@@ -1124,3 +1124,7 @@ nav.pagination a {
   min-width: 24px;
   min-height: 24px;
 }
+
+.doc mark {
+  background-color: #eafaf4;
+}
