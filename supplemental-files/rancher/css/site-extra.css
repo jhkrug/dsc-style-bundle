@@ -1175,5 +1175,5 @@ nav.pagination a {
 
 /* Breadcrumb separator color contrast for accessibility */
 .breadcrumbs li::after {
-  color: #008657;
+  color: #025937;
 }
