@@ -52,11 +52,7 @@ i.fa[title="Tip:"] {
 }
 
 /* Navbar colors */
-.navbar-brand
-  .navbar-item:first-child
-  .navbar-brand
-  .navbar-item:first-child
-  a {
+.navbar-brand .navbar-item:first-child .navbar-brand .navbar-item:first-child a {
   background-color: #0c322c;
 }
 
@@ -67,8 +63,9 @@ i.fa[title="Tip:"] {
 }
 
 @media screen and (min-width: 1024px) {
+
   .navbar-end .navbar-link:hover,
-  .navbar-end > a.navbar-item:hover {
+  .navbar-end>a.navbar-item:hover {
     background-color: #ff6a52;
     color: #fff;
   }
@@ -76,7 +73,7 @@ i.fa[title="Tip:"] {
 
 .navbar-end .navbar-item.has-dropdown:hover .navbar-link,
 .navbar-end .navbar-link:hover,
-.navbar-end > a.navbar-item:hover {
+.navbar-end>a.navbar-item:hover {
   background: #000;
   color: #fff;
   /* border-bottom-style: unset; */
@@ -227,8 +224,8 @@ a.navbar-logo {
 }
 
 /* Left Nav Link styles  */
-.is-current-page > .nav-link,
-.is-current-page > .nav-text {
+.is-current-page>.nav-link,
+.is-current-page>.nav-text {
   font-weight: 700;
   color: #fff;
   background-color: #008657;
@@ -538,7 +535,7 @@ doc table.tableblock {
   border-left: solid 0.5px #c0c2c4;
 }
 
-.doc table.tableblock > :not(thead) th,
+.doc table.tableblock> :not(thead) th,
 .doc table.tableblock td {
   border-left: solid 1px #c0c2c4;
   border-right: solid 1px #c0c2c4;
@@ -554,7 +551,7 @@ tr:nth-child(even) {
   /* SUSE mint color, palest */
 }
 
-.doc .admonitionblock > table {
+.doc .admonitionblock>table {
   border-collapse: unset;
 }
 
@@ -657,7 +654,7 @@ tr:nth-child(even) {
 }
 
 .doc .admonitionblock .icon i {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
 }
 
 .doc .admonitionblock td.content {
@@ -873,7 +870,7 @@ div#toctitle {
   /* SUSE mint color, but paler */
 }
 
-.doc details > summary {
+.doc details>summary {
   display: list-item;
   position: static;
   color: unset;
@@ -883,13 +880,13 @@ div#toctitle {
   /* SUSE pine color, but paler */
 }
 
-.doc details > summary::marker {
+.doc details>summary::marker {
   color: #bd3314;
   /* SUSE persimmon color, a shade darker */
 }
 
 /* Next, is for Safari browser, or no triangle */
-.doc details > summary::-webkit-details-marker {
+.doc details>summary::-webkit-details-marker {
   display: inline-block;
   color: #bd3314;
   /* SUSE persimmon color, a shade darker */
@@ -902,7 +899,7 @@ div#toctitle {
   /* SUSE mint color, but paler */
 }
 
-.doc details[open] > summary {
+.doc details[open]>summary {
   border: unset;
   background-color: #90ebcd46;
   /* SUSE mint color, but paler */
@@ -1068,7 +1065,7 @@ div#toctitle {
   }
 
   .nav-container,
-  .navbar > :not(.navbar-brand),
+  .navbar> :not(.navbar-brand),
   .toolbar,
   aside.toc,
   nav.pagination {
@@ -1106,12 +1103,12 @@ div#toctitle {
 /* Code block styling - end */
 
 /* So image top title font descenders won't overlap into the image area */
-#preamble > div > div:nth-child(3) > p > strong > em {
+#preamble>div>div:nth-child(3)>p>strong>em {
   line-height: 1.75;
 }
 
 /* Different color for the title of the code block. */
-div.listingblock > div.title {
+div.listingblock>div.title {
   background-color: #008878;
   font-weight: 600;
 }
@@ -1154,8 +1151,8 @@ nav.pagination a {
 }
 
 /* Added to tone down the contrast, to blend better, in the tabbed content */
-.doc .exampleblock > .content,
-.doc details.result > .content {
+.doc .exampleblock>.content,
+.doc details.result>.content {
   background: inherit;
   border: 1px solid #0c322c32;
   /* SUSE pine, but paler */
