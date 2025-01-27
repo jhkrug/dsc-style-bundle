@@ -256,16 +256,19 @@ a:hover {
 /* Plain links in paragraphs and body */
 .doc a.bare {
   color: #008657;
+  text-decoration: underline;
 }
 
 .doc a.bare :hover {
   color: #008657;
+  text-decoration: underline;
 }
 
 /* TOC links and heading links */
 .doc a,
 .doc a:visited {
   color: #008657;
+  text-decoration: underline;
 }
 
 .doc a:hover {
