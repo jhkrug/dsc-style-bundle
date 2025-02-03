@@ -1178,7 +1178,11 @@ nav.pagination a {
   color: #025937;
 }
 
-.nav-panel-explore .component .title {
+.nav-panel-explore .components .component .title {
   font-weight: 500;
+  background: #025937;
+}
+
+.nav-panel-explore .components .component .title a {
   color: #efefef;
 }
