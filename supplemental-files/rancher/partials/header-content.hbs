@@ -8,7 +8,7 @@
       {{#if env.SITE_SEARCH_PROVIDER}}
       <div class="navbar-item search hide-for-print">
         <div id="search-field" class="field">
-          <input id="search-input" type="text" placeholder="Search the docs" {{#if page.home}} autofocus{{/if}}>
+          <input label="Search" aria-label="Search" id="search-input" type="text" placeholder="Search the docs" {{#if page.home}} autofocus{{/if}}>
         </div>
       </div>
       {{/if}}
@@ -52,7 +52,7 @@
         </div>
         <div class="navbar-item">
           <a href="https://twitter.com/SUSE">
-            <img class="x-logo" src="{{uiRootPath}}/img/x-logo-white.png">
+            <img alt="X-logo" class="x-logo" src="{{uiRootPath}}/img/x-logo-white.png">
           </a>
         </div>
 
