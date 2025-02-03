@@ -1177,3 +1177,8 @@ nav.pagination a {
 .breadcrumbs li::after {
   color: #025937;
 }
+
+.nav-panel-explore .component .title {
+  font-weight: 500;
+  color: #efefef;
+}
