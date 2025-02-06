@@ -1180,9 +1180,22 @@ nav.pagination a {
 
 .nav-panel-explore .components .component .title {
   font-weight: 500;
-  background: #025937;
+  background: #efefef;
+  padding-left: .1em;
 }
 
 .nav-panel-explore .components .component .title a {
-  color: #efefef;
+  color: #025937;
+  font-weight: 800;
+}
+
+.nav-panel-explore .components .component .title a:hover {
+  color: #025937;
+  text-decoration: underline;
+  font-weight: 800;
+}
+
+.nav-panel-explore .component+.component {
+  margin-top: .5rem;
+  border-top-style: ridge;
 }
