@@ -226,7 +226,6 @@ a.navbar-logo {
 /* Left Nav Link styles  */
 .is-current-page>.nav-link,
 .is-current-page>.nav-text {
-  font-weight: 700;
   color: #fff;
   background-color: #008657;
   padding-left: 6px;
