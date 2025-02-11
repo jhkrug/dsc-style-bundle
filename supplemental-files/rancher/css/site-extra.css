@@ -661,6 +661,7 @@ tr:nth-child(even) {
 
 .doc .admonitionblock td.content {
   padding-top: 4.5rem;
+  background-color: #ffffff;
 }
 
 /* Important block styles */
