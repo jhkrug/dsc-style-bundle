@@ -1198,3 +1198,10 @@ nav.pagination a {
   margin-top: .5rem;
   border-top-style: ridge;
 }
+
+
+
+.navbar-item .visual-search-label {
+  /* color: #efefef; */
+  font-weight: 700;
+}
