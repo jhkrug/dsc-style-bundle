@@ -530,7 +530,7 @@ doc table.tableblock {
 .doc table.tableblock thead th {
   border-bottom: 2.5px solid #c0c2c4;
   padding: 0.5rem;
-  background: #c8dafc;
+  background: #e6edfe;
   /* SUSE waterhole color, paler */
   border-right: solid 0.5px #c0c2c4;
   border-top: solid 0.5px #c0c2c4;
@@ -549,8 +549,7 @@ table {
 }
 
 tr:nth-child(even) {
-  background: #eafaf8;
-  /* SUSE mint color, palest */
+  background: #fdfdfd;
 }
 
 .doc .admonitionblock>table {
