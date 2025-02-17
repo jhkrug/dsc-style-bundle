@@ -284,7 +284,7 @@ a:hover {
   display: block;
   overflow-x: auto;
   padding: 0.75rem;
-  color: #bfcbfb;
+  color: #eafaf4;
   border-radius: 0;
 }
 
@@ -915,7 +915,7 @@ div#toctitle {
 /* Adapted from the GitHub style by Vasily Polovnyov <vast@whiteants.net> */
 
 .hljs-comment {
-  color: #eafaf48f;
+  color: #eafaf4;
   font-style: italic;
   font-weight: 400;
 }
@@ -929,22 +929,35 @@ div#toctitle {
 .hljs-selector-tag,
 .hljs-subst,
 .hljs-keyword {
-  color: #c0efde;
+  /* SUSE Mint */
+  color: #90ebcd;
   font-weight: 400;
 }
 
 .hljs-literal,
 .hljs-number,
-.hljs-tag .hljs-attr,
+.hljs-tag,
 .hljs-template-variable,
 .hljs-variable {
   color: #eafaf4;
   font-weight: 400;
 }
 
+.hljs-tag .hljs-attr {
+  color: #90ebcd;
+}
+
+.hljs-tag .hljs-name {
+  color: #90ebcd;
+}
+
+.hljs-attr {
+  color: #90ebcd;
+}
+
 .hljs-doctag,
 .hljs-string {
-  color: #eafaf4b4;
+  color: #eafaf4;
   font-weight: 400;
 }
 
@@ -966,10 +979,13 @@ div#toctitle {
 }
 
 .hljs-attribute,
-.hljs-name,
-.hljs-tag {
+.hljs-name {
   color: #eafaf4;
   font-weight: 400;
+}
+
+.hljs-tag {
+  color: #90ebcd;
 }
 
 .hljs-link,
@@ -980,7 +996,7 @@ div#toctitle {
 
 .hljs-bullet,
 .hljs-symbol {
-  color: #ffb184;
+  color: #ffd3bd;
   font-weight: 400;
 }
 
@@ -991,7 +1007,7 @@ div#toctitle {
 }
 
 .hljs-meta {
-  color: #999;
+  color: #ccc;
   font-weight: 400;
 }
 
@@ -1199,9 +1215,11 @@ nav.pagination a {
   border-top-style: ridge;
 }
 
-
-
 .navbar-item .visual-search-label {
   color: #efefef;
   font-weight: 700;
+}
+
+.doc .quoteblock {
+  background: #fcfcfc
 }
