@@ -1216,8 +1216,10 @@ nav.pagination a {
 }
 
 .navbar-item .visual-search-label {
-  color: #efefef;
-  font-weight: 700;
+  color: #025937;
+  background-image: url(../img/SUSE-1C-Neg-Mag-Glass.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .doc .quoteblock {
