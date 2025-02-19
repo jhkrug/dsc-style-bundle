@@ -69,6 +69,11 @@ i.fa[title="Tip:"] {
     background-color: #ff6a52;
     color: #fff;
   }
+
+  .navbar-dropdown {
+    right: 0;
+    left: unset;
+  }
 }
 
 .navbar-end .navbar-item.has-dropdown:hover .navbar-link,
