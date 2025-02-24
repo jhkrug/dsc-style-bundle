@@ -280,6 +280,22 @@ a:hover {
   text-decoration: underline;
 }
 
+/*
+ * For links in table headers, otherwise there is insufficient contrast on the
+ * pale blue.
+ */
+
+.doc th>a,
+.doc th>a:visited {
+  color: unset;
+  text-decoration: underline;
+}
+
+.doc th>a:hover {
+  color: #30ba78;
+  text-decoration: underline;
+}
+
 .doc .listingblock pre:not(.highlight),
 .doc .literalblock pre,
 .doc pre.highlight code {
@@ -1017,11 +1033,13 @@ div#toctitle {
 }
 
 .hljs-deletion {
-  background: #fdd;
+  color: #fdd;
+  background: #0c322c;
 }
 
 .hljs-addition {
-  background: #dfd;
+  color: #dfd;
+  background: #0c322c;
 }
 
 .hljs-emphasis {
@@ -1229,4 +1247,9 @@ nav.pagination a {
 
 .doc .quoteblock {
   background: #fcfcfc
+}
+
+.doc .sidebarblock {
+  background: #fcfcfc;
+  border-radius: 0rem;
 }
