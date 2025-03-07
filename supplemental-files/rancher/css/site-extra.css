@@ -1253,3 +1253,16 @@ nav.pagination a {
   background: #fcfcfc;
   border-radius: 0rem;
 }
+
+.doc .procedure {
+  background: #fff;
+  border-left: 2px solid #bff1ea;
+  padding-left: 0rem;
+  padding-top: 0rem;
+  margin-left: 1rem;
+}
+
+.doc .procedure .title {
+  background: #bff1ea;
+  color: #00112b;
+}
