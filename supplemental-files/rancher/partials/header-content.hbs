@@ -11,7 +11,7 @@
           <label class="visual-search-label" for="search-input">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
           <input label="Search" aria-label="Search" id="search-input" type="text" placeholder="Search the docs" {{#if page.home}} autofocus{{/if}}>
           <label class="filter checkbox" style="display: none">
-            <input type="checkbox" data-facet-filter="component:{{page.component.name}}" checked> In this project
+            <input type="checkbox" data-facet-filter="component:{{page.component.name}}" checked> Only this project
           </label>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <div class="navbar-end">
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link">
-            <img src="{{uiRootPath}}/img/resources.png" class="langIcon Resurces" alt="Resources" title="Resources">
+            <img src="{{uiRootPath}}/img/resources.png" class="langIcon Resources" alt="Resources" title="Resources">
           </div>
           <div class="navbar-dropdown">
             {{#with page.origin}}
