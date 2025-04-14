@@ -1266,3 +1266,34 @@ nav.pagination a {
   background: #bff1ea;
   color: #00112b;
 }
+
+.swagger-ui .info .title {
+  color: #bff1ea;
+}
+
+.swagger-ui .btn.authorize {
+  color: #008657
+}
+
+.swagger-ui .opblock.opblock-get .opblock-summary-method {
+  background: #2453ff;
+}
+.swagger-ui .opblock.opblock-post .opblock-summary-method {
+  background: #088657;
+}
+.swagger-ui .opblock.opblock-put .opblock-summary-method {
+  background: #bd3314;
+}
+.swagger-ui .opblock.opblock-delete .opblock-summary-method {
+  background: #8e2810;
+}
+.swagger-ui .opblock.opblock-patch .opblock-summary-method {
+  background: #01564a;
+}
+.swagger-ui .parameter__extension, .swagger-ui .parameter__in {
+  color: #0c322c;
+}
+.swagger-ui .parameter__name.required span,
+.swagger-ui .parameter__name.required:after {
+  color: #8e2810;
+}
