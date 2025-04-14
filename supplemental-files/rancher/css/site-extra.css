@@ -1298,8 +1298,17 @@ nav.pagination a {
   color: #8e2810;
 }
 
+/* This hides the Antora SwaggerUI auth button for live interaction. */
+.swagger-ui .scheme-container {
+  display: none;
+}
+
+/* This hides the Antora SwaggerUI 'Try it out' button for live interaction. */
+.swagger-ui .btn {
+  display: none;
+}
+
 .doc .source-toolbox img.copy-icon {
-  color: #ff52ab;
   filter: invert(100%);
 }
 
