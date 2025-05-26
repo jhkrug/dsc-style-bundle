@@ -1315,3 +1315,10 @@ nav.pagination a {
 .doc .source-toolbox .source-lang {
   color: #ffffff;
 }
+
+.draft-banner {
+  color: #ffd3bd;
+  font-weight: 900;
+  font-size: larger;
+  align-self: anchor-center;
+}
