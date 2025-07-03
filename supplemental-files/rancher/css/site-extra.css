@@ -1245,6 +1245,13 @@ nav.pagination a {
   background-size: cover;
 }
 
+.navbar-item .visual-search-label-bc {
+  color: #025937;
+  background-image: url(../img/SUSE-1C-Black-Mag-Glass.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .doc .quoteblock {
   background: #fcfcfc
 }
@@ -1321,4 +1328,17 @@ nav.pagination a {
   font-weight: 900;
   font-size: larger;
   align-self: anchor-center;
+}
+
+/* CSS for the annual survey link 2025 */
+.survey-link {
+  background-color: #90ebcd;
+  padding: 16px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  color: black;
+  font-weight: 500;
+  z-index: 3;
+  text-decoration: none;
 }
