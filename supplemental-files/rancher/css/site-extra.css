@@ -63,7 +63,6 @@ i.fa[title="Tip:"] {
 }
 
 @media screen and (min-width: 1024px) {
-
   .navbar-end .navbar-link:hover,
   .navbar-end>a.navbar-item:hover {
     background-color: #ff6a52;
@@ -205,6 +204,9 @@ a.navbar-logo {
 
 .toolbar {
   background-color: #efefef;
+  /* Shared Header - start */
+  top: 6.9rem;
+  /* Shared Header - end */
 }
 
 /* left nav panel */
@@ -348,6 +350,9 @@ body {
 body {
   font-family: "SUSE", "Poppins", sans-serif;
   word-break: keep-all;
+  /* Shared Header - start */
+  padding-top: 0;
+  /* Shared Header - end */
 }
 
 /* Font for side toc
@@ -453,10 +458,6 @@ img.langIcon.korea {
   padding-top: 10px;
   padding-right: 10px;
   /* Added to make the hover color size more evenly. */
-}
-
-.toc.sidebar .toc-menu {
-  position: fixed;
 }
 
 .toc .toc-menu a {
@@ -1349,3 +1350,26 @@ nav.pagination a {
     width: 1.25rem;
     margin: .625rem;
 }
+
+/* Shared Header - start */
+.nav {
+  top: 6.9rem;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  position: sticky;
+  height: calc(100vh - 6.9rem);
+}
+
+.toc.sidebar .toc-menu {
+  margin-right: .75rem;
+  position: sticky;
+  top: 9.4rem;
+}
+
+shared-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Shared Header - end */
