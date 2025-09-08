@@ -85,47 +85,71 @@
 </header>
 --}}
 
+<!-- Canonical link -->
 <link href="{{page.canonicalUrl}}" rel="canonical"/>
 
 {{!-- A default English link. Always assumed to exist. --}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'en' this}}" hreflang="x-default" rel="alternate"/>
+<!-- Default English link -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'en' this}}" hreflang="x-default" rel="alternate"/>
 
-{{!-- This one is for the currently processed page. The lang can be extracted from the URL. --}}
-<link href="https://documentation.suse.com/cloudnative{{page.url}}" hreflang="{{langfromurl page.url 'hreflang' this}}" rel="alternate" />
+{{!-- This is for the currently processed page. The lang can be extracted from the URL. --}}
+<!-- Link for the currently processed page -->
+<link href="https://documentation.suse.com/cloudnative{{page.url}}" hrefLang="{{langFromUrl page.url 'hreflang' this}}" rel="alternate" />
 
 {{!-- Go through the potentially available languages to see if any alternate language versions exist. --}}
 {{!-- If so, then include them. --}}
 
-{{#if (langexistsfor 'en' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'en' this}}" hreflang="en-US" rel="alternate" />
+{{!--
+Pass `langExistsFor four parameters:
+  * The first is the language code to construct a hreflang link for.
+  * The page.url is only used for debug logging.
+  * page.attributes.languages is from each asciidoc document and is a
+    list of languages codes for which version of this page exist.
+    e.g. [en, zh, ko] indicated the page is in English, Chinese and Korean.
+  * The language from the currently being processed html source url. It's used
+    to compare to parameter one. If they are the same it's not necessary to
+    create a duplicate. It would already have been done in the immediately
+    prior step.
+--}}
+
+{{#if (langExistsFor 'en' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the English page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'en' this}}" hreflang="en-US" rel="alternate" />
 {{/if}}
 
-{{#if (langexistsfor 'ko' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'ko' this}}" hreflang="ko-KR" rel="alternate" />
+{{#if (langExistsFor 'ko' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Korean page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'ko' this}}" hreflang="ko-KR" rel="alternate" />
 {{/if}}
 
-{{#if (langexistsfor 'ja' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'ja' this}}" hreflang="ja-JP" rel="alternate" />
+{{#if (langExistsFor 'ja' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Japanese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'ja' this}}" hreflang="ja-JP" rel="alternate" />
 {{/if}}
 
-{{#if (langexistsfor 'zh' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'zh' this}}" hreflang="zh-CN" rel="alternate" />
+{{#if (langExistsFor 'zh' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Chinese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'zh' this}}" hreflang="zh-CN" rel="alternate" />
 {{/if}}
 
-{{#if (langexistsfor 'de' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'de' this}}" hreflang="de-DE" rel="alternate" />
+{{#if (langExistsFor 'de' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the German page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'de' this}}" hreflang="de-DE" rel="alternate" />
 {{/if}}
 
-{{#if (langexistsfor 'fr' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'fr' this}}" hreflang="fr-FR" rel="alternate" />
+{{#if (langExistsFor 'fr' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the French page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'fr' this}}" hreflang="fr-FR" rel="alternate" />
 {{/if}}
 
-{{#if (langexistsfor 'es' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'es' this}}" hreflang="es-ES" rel="alternate" />
+{{#if (langExistsFor 'es' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Spanish page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'es' this}}" hreflang="es-ES" rel="alternate" />
 {{/if}}
 
-{{#if (langexistsfor 'pt_br' page.attributes.languages)}}
-<link href="https://documentation.suse.com/cloudnative{{hreflang page.url 'pt-br' this}}" hreflang="pt-BR" rel="alternate" />
+{{#if (langExistsFor 'pt_br' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Brazilian Portuguese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'pt-br' this}}" hreflang="pt-BR" rel="alternate" />
 {{/if}}
 
 
