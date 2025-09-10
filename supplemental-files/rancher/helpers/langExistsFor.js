@@ -12,7 +12,7 @@ module.exports = (lang, url, languages, thispagelang) => {
   dprint('Checking for', lang, 'in', languages, 'for', url);
   if (languages) {
     if (thispagelang == lang) {
-      dprint('Returning false as thispagelang == lang')
+      dprint('Returning false as thispagelang == lang');
       return false;
     }
     const arr = languages.replace(/[\[\]\s]/g, '').toLowerCase().split(',')
@@ -20,6 +20,6 @@ module.exports = (lang, url, languages, thispagelang) => {
     dprint('Returning result =', result);
     return result;
   }
-  dprint('No languages.')
+  dprint('No languages.');
   return false;
 }

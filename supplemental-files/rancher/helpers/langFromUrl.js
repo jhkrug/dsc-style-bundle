@@ -1,5 +1,11 @@
 'use strict'
 
+const dprint = (...args) => {
+  const debug = false;
+  if (debug)
+    console.log(...args);
+}
+
 // This 'langFromURL' function returns either the url language or the hreflang
 // language. The URL language is determined from the 3rd part of the URL, The
 // hreflang language is determined by using the URL language as an index into

@@ -25,8 +25,8 @@ const languages = {};
 hreflangLinks.forEach((link) => {
   const hreflang = link.getAttribute("hreflang");
   const href = link.getAttribute("href");
-  dprint('hreflang = ' + hreflang)
-  dprint('href = ' + href)
+  dprint('hreflang = ' + hreflang);
+  dprint('href = ' + href);
 
   if (hreflang && hreflang !== "x-default") {
     let label;
