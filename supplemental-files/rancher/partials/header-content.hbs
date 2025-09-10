@@ -96,10 +96,10 @@
 <!-- Link for the currently processed page -->
 <link href="https://documentation.suse.com/cloudnative{{page.url}}" hrefLang="{{langFromUrl page.url 'hreflang' this}}" rel="alternate" />
 
-{{!-- Go through the potentially available languages to see if any alternate language versions exist. --}}
-{{!-- If so, then include them. --}}
-
 {{!--
+Go through the potentially available languages to see if any alternate language versions exist.
+If so, then include them.
+
 Pass `langExistsFor four parameters:
   * The first is the language code to construct a hreflang link for.
   * The page.url is only used for debug logging.

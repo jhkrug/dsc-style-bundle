@@ -1,5 +1,11 @@
 'use strict'
 
+const dprint = (...args) => {
+  const debug = false;
+  if (debug)
+    console.log(...args);
+}
+
 const get_project_code = (url) => url.split('/')[1] || null
 
 module.exports = (request, nav, projectData) => {

@@ -1,6 +1,12 @@
 
 'use strict'
 
+const dprint = (...args) => {
+  const debug = false;
+  if (debug)
+    console.log(...args);
+}
+
 const get_component = (url) => url.split('/')[1] || null
 const get_version = (url) => url.split('/')[2] || null
 const get_remainder = (url) => url.split('/').slice(4,).join('/') || null

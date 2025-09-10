@@ -1,4 +1,11 @@
 // Find all alternate hreflang link elements
+
+const dprint = (...args) => {
+  const debug = false;
+  if (debug)
+    console.log(...args);
+}
+
 const hreflangLinks = document.querySelectorAll('link[rel="alternate"]');
 
 const hreflangToLangMapping = {
@@ -18,8 +25,8 @@ const languages = {};
 hreflangLinks.forEach((link) => {
   const hreflang = link.getAttribute("hreflang");
   const href = link.getAttribute("href");
-  // console.log('hreflang = ' + hreflang)
-  // console.log('href = ' + href)
+  dprint('hreflang = ' + hreflang)
+  dprint('href = ' + href)
 
   if (hreflang && hreflang !== "x-default") {
     let label;
@@ -52,10 +59,10 @@ hreflangLinks.forEach((link) => {
         label = hreflang;
         break;
     }
-    // console.log('label = ' + label);
+    dprint('label = ' + label);
 
     let lang = hreflangToLangMapping[hreflang.toLowerCase()];
-    // console.log('lang = ' + lang);
+    dprint('lang = ' + lang);
     languages[lang] = {
       label: label,
       url: href,
@@ -65,7 +72,7 @@ hreflangLinks.forEach((link) => {
 
 // Get the current language
 const currentLang = document.documentElement.lang || "en";
-// console.log('currentLang = ' + currentLang);
+dprint('currentLang = ' + currentLang);
 
 // Update the <shared-header> element
 const sharedHeader = document.querySelector("shared-header");
