@@ -205,7 +205,7 @@ a.navbar-logo {
 .toolbar {
   background-color: #efefef;
   /* Shared Header - start */
-  top: 6.9rem;
+  top: 6.8rem;
   /* Shared Header - end */
 }
 
@@ -1353,11 +1353,11 @@ nav.pagination a {
 
 /* Shared Header - start */
 .nav {
-  top: 6.9rem;
+  top: 6.8rem;
   -webkit-box-shadow: none;
   box-shadow: none;
   position: sticky;
-  height: calc(100vh - 6.9rem);
+  height: calc(100vh - 6.8rem);
 }
 
 .toc.sidebar .toc-menu {
