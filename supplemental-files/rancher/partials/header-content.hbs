@@ -1,4 +1,4 @@
-<header class="header">
+{{!-- <header class="header">
   <nav class="navbar">
     <div class="navbar-brand">
       <div class="navbar-item">
@@ -8,17 +8,6 @@
 {{#if page.attributes.draft-preview-only}}
   <div class="draft-banner">DRAFT PREVIEW ONLY!</div>
 {{/if}}
-      {{#if env.SITE_SEARCH_PROVIDER}}
-      <div class="navbar-item search hide-for-print">
-        <div id="search-field" class="field">
-          <label class="visual-search-label" for="search-input">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <input label="Search" aria-label="Search" id="search-input" type="text" placeholder="Search the docs" {{#if page.home}} autofocus{{/if}}>
-          <label class="filter checkbox" style="display: none">
-            <input type="checkbox" data-facet-filter="component:{{page.component.name}}" checked> Only this project
-          </label>
-        </div>
-      </div>
-      {{/if}}
       <button class="navbar-burger" data-target="topbar-nav">
         <span></span>
         <span></span>
@@ -94,3 +83,83 @@
   </nav>
   <a target=_blank"" class="survey-link" href="https://suselinux.fra1.qualtrics.com/jfe/form/SV_bEiGZbUNzLD8Tcy"> Documentation survey </a>
 </header>
+--}}
+
+<!-- Canonical link -->
+<link href="{{page.canonicalUrl}}" rel="canonical"/>
+
+{{!-- A default English link. Always assumed to exist. --}}
+<!-- Default English link -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'en' this}}" hreflang="x-default" rel="alternate"/>
+
+{{!-- This is for the currently processed page. The lang can be extracted from the URL. --}}
+<!-- Link for the currently processed page -->
+<link href="https://documentation.suse.com/cloudnative{{page.url}}" hrefLang="{{langFromUrl page.url 'hreflang' this}}" rel="alternate" />
+
+{{!--
+Go through the potentially available languages to see if any alternate language versions exist.
+If so, then include them.
+
+Pass `langExistsFor four parameters:
+  * The first is the language code to construct a hreflang link for.
+  * The page.url is only used for debug logging.
+  * page.attributes.languages is from each asciidoc document and is a
+    list of languages codes for which version of this page exist.
+    e.g. [en, zh, ko] indicated the page is in English, Chinese and Korean.
+  * The language from the currently being processed html source url. It's used
+    to compare to parameter one. If they are the same it's not necessary to
+    create a duplicate. It would already have been done in the immediately
+    prior step.
+--}}
+
+{{#if (langExistsFor 'en' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the English page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'en' this}}" hreflang="en-US" rel="alternate" />
+{{/if}}
+
+{{#if (langExistsFor 'ko' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Korean page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'ko' this}}" hreflang="ko-KR" rel="alternate" />
+{{/if}}
+
+{{#if (langExistsFor 'ja' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Japanese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'ja' this}}" hreflang="ja-JP" rel="alternate" />
+{{/if}}
+
+{{#if (langExistsFor 'zh' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Chinese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'zh' this}}" hreflang="zh-CN" rel="alternate" />
+{{/if}}
+
+{{#if (langExistsFor 'de' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the German page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'de' this}}" hreflang="de-DE" rel="alternate" />
+{{/if}}
+
+{{#if (langExistsFor 'fr' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the French page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'fr' this}}" hreflang="fr-FR" rel="alternate" />
+{{/if}}
+
+{{#if (langExistsFor 'es' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Spanish page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'es' this}}" hreflang="es-ES" rel="alternate" />
+{{/if}}
+
+{{#if (langExistsFor 'pt_br' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Brazilian Portuguese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'pt-br' this}}" hreflang="pt-BR" rel="alternate" />
+{{/if}}
+
+
+<shared-header language="en" languages='{
+"en": { "label": "English", "url": "https://documentation.suse.com/en-us/" },
+"de": { "label": "Deutsch", "url": "https://documentation.suse.com/de-de/" },
+"fr": { "label": "Français", "url": "https://documentation.suse.com/fr-fr/" },
+"es": { "label": "Español", "url": "https://documentation.suse.com/es-es/" },
+"zh_CN": { "label": "中文", "url": "https://documentation.suse.com/zh-cn/" },
+"pt_BR": { "label": "Português Brasileiro", "url": "https://documentation.suse.com/pt-br/" }
+}'>
+</shared-header>
+<a target=_blank"" class="survey-link" href="https://suselinux.fra1.qualtrics.com/jfe/form/SV_bEiGZbUNzLD8Tcy"> Documentation survey </a>

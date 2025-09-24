@@ -63,7 +63,6 @@ i.fa[title="Tip:"] {
 }
 
 @media screen and (min-width: 1024px) {
-
   .navbar-end .navbar-link:hover,
   .navbar-end>a.navbar-item:hover {
     background-color: #ff6a52;
@@ -205,6 +204,9 @@ a.navbar-logo {
 
 .toolbar {
   background-color: #efefef;
+  /* Shared Header - start */
+  top: 6.8rem;
+  /* Shared Header - end */
 }
 
 /* left nav panel */
@@ -299,6 +301,9 @@ a:hover {
 .doc .listingblock pre:not(.highlight),
 .doc .literalblock pre,
 .doc pre.highlight code {
+  font-family: "SUSE Mono", "SUSEMono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
   background: #0c322c;
   -webkit-box-shadow: inset 0 0 1.75px #e1e1e1;
   box-shadow: inset 0 0 1.75px #e1e1e1;
@@ -347,7 +352,12 @@ body {
 
 body {
   font-family: "SUSE", "Poppins", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
   word-break: keep-all;
+  /* Shared Header - start */
+  padding-top: 0;
+  /* Shared Header - end */
 }
 
 /* Font for side toc
@@ -453,10 +463,6 @@ img.langIcon.korea {
   padding-top: 10px;
   padding-right: 10px;
   /* Added to make the hover color size more evenly. */
-}
-
-.toc.sidebar .toc-menu {
-  position: fixed;
 }
 
 .toc .toc-menu a {
@@ -578,8 +584,11 @@ tr:nth-child(even) {
 }
 
 .doc p code {
-  font-family: "Roboto Mono", "RobotoMono", "DejaVu Sans Mono",
-    "DejaVuSansMono", "Menlo", "Andale Mono", monospace;
+  font-family: "SUSE Mono", "SUSEMono", monospace;
+  font-optical-sizing: auto;
+  font-style: normal;
+  /* font-family: "SUSE Mono", "SUSEMono", "Roboto Mono", "RobotoMono", "DejaVu Sans Mono",
+    "DejaVuSansMono", "Menlo", "Andale Mono", monospace; */
   border: unset;
   color: #0c322c;
   font-weight: 500;
@@ -1342,3 +1351,38 @@ nav.pagination a {
   z-index: 3;
   text-decoration: none;
 }
+
+.home-link-dsc {
+  display: block;
+  background: url(../img/home-o.svg) no-repeat 50%;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin: .625rem;
+}
+.home-link-dsc.is-current,
+.home-link-dsc:hover {
+  background-image: url(../img/home.svg)
+}
+
+/* Shared Header - start */
+.nav {
+  top: 6.8rem;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  position: sticky;
+  height: calc(100vh - 6.8rem);
+}
+
+.toc.sidebar .toc-menu {
+  margin-right: .75rem;
+  position: sticky;
+  top: 9.4rem;
+}
+
+shared-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Shared Header - end */
