@@ -29,6 +29,12 @@ module.exports = (pageurl, type, nav) => {
   const lang = get_lang(pageurl);
   if (type == 'hreflang') {
     return langToHreflangMapping[lang] || null;
+  } else if (type == 'headerlang') {
+    if (lang == 'zh'.toLowerCase()) {
+      return 'zh_cn';
+    } else {
+      return lang;
+    }
   } else {
     return lang;
   }
