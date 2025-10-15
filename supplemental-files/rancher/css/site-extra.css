@@ -1365,6 +1365,23 @@ nav.pagination a {
 }
 
 /* Shared Header - start */
+.doc {
+  margin-top: 122px;
+}
+
+@media screen and (max-width: 992px) {
+  .doc {
+    margin-top: 76px;
+  }
+  .toolbar {
+    top: 76px;
+    margin-top: 10px;
+  } 
+  .nav-list {
+    margin-top: 35px;
+  }
+}
+
 .nav {
   top: 6.8rem;
   -webkit-box-shadow: none;
