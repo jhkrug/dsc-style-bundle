@@ -1376,9 +1376,9 @@ nav.pagination a {
   .toolbar {
     top: 76px;
     margin-top: 10px;
-  } 
-  .nav-list {
-    margin-top: 35px;
+  }
+  .nav {
+    margin-top: 60px;
   }
 }
 
