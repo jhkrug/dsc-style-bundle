@@ -11,12 +11,63 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap&family=SUSE+Mono:ital,wght@0,100..800;1,100..800" rel="stylesheet">
 <link href="https://documentation.suse.com/docserv/res/fonts/poppins/poppins.css" rel="stylesheet">
-<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto&display=swap" rel="stylesheet"> -->
 <link rel="stylesheet" href="{{uiRootPath}}/css/vendor/light.css">
 <script src="/docserv/res/lightheaded/analytics.js" type="text/javascript"></script>
-
 <script type="module">
   import { defineCustomElements, setAssetPath } from 'https://d12w0ryu9hjsx8.cloudfront.net/shared-header/1.6/shared-header.esm.js';
   defineCustomElements();
   setAssetPath("https://d12w0ryu9hjsx8.cloudfront.net/shared-header/1.6/assets");
 </script>
+{{!-- A default English link. Always assumed to exist. --}}
+<!-- Default English link -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'en' this}}" hreflang="x-default" rel="alternate"/>
+{{!-- This is for the currently processed page. The lang can be extracted from the URL. --}}
+<!-- Link for the currently processed page -->
+<link href="https://documentation.suse.com/cloudnative{{page.url}}" hrefLang="{{langFromUrl page.url 'hreflang' this}}" rel="alternate" />
+{{!--
+Go through the potentially available languages to see if any alternate language versions exist.
+If so, then include them.
+
+Pass `langExistsFor four parameters:
+  * The first is the language code to construct a hreflang link for.
+  * The page.url is only used for debug logging.
+  * page.attributes.languages is from each asciidoc document and is a
+    list of languages codes for which version of this page exist.
+    e.g. [en, zh, ko] indicated the page is in English, Chinese and Korean.
+  * The language from the currently being processed html source url. It's used
+    to compare to parameter one. If they are the same it's not necessary to
+    create a duplicate. It would already have been done in the immediately
+    prior step.
+--}}
+{{#if (langExistsFor 'en' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the English page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'en' this}}" hreflang="en-US" rel="alternate" />
+{{/if}}
+{{#if (langExistsFor 'ko' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Korean page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'ko' this}}" hreflang="ko-KR" rel="alternate" />
+{{/if}}
+{{#if (langExistsFor 'ja' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Japanese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'ja' this}}" hreflang="ja-JP" rel="alternate" />
+{{/if}}
+{{#if (langExistsFor 'zh' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Chinese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'zh' this}}" hreflang="zh-CN" rel="alternate" />
+{{/if}}
+{{#if (langExistsFor 'de' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the German page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'de' this}}" hreflang="de-DE" rel="alternate" />
+{{/if}}
+{{#if (langExistsFor 'fr' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the French page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'fr' this}}" hreflang="fr-FR" rel="alternate" />
+{{/if}}
+{{#if (langExistsFor 'es' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Spanish page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'es' this}}" hreflang="es-ES" rel="alternate" />
+{{/if}}
+{{#if (langExistsFor 'pt_br' page.url page.attributes.languages (langFromUrl page.url 'lang' this))}}
+<!-- Link for the Brazilian Portuguese page -->
+<link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'pt-br' this}}" hreflang="pt-BR" rel="alternate" />
+{{/if}}
