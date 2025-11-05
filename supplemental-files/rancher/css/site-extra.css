@@ -1403,3 +1403,8 @@ shared-header {
 }
 
 /* Shared Header - end */
+
+/* Ensure main content area fills viewport minus header */
+.body, main > .content {
+  min-height: calc(100vh - 2.2rem); /* 2.2rem is the sharedheader height, I think */
+}
