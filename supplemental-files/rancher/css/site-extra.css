@@ -1225,6 +1225,29 @@ nav.pagination a {
   color: #025937;
 }
 
+.breadcrumbs ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumbs li {
+  display: flex;
+  align-items: center;
+}
+
+.home-link-dsc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.25rem;
+  width: 1.25rem;
+  margin: 0 0.5rem 0 0;
+}
+
 .nav-panel-explore .components .component .title {
   font-weight: 500;
   background: #efefef;
@@ -1354,7 +1377,8 @@ nav.pagination a {
 
 .home-link-dsc {
   display: block;
-  background: url(../img/home-o.svg) no-repeat 50%;
+  background: url(../img/home-o.svg);
+  /* background: url(../img/home-o.svg) no-repeat 50%; */
   height: 1.25rem;
   width: 1.25rem;
   margin: .625rem;
@@ -1365,6 +1389,23 @@ nav.pagination a {
 }
 
 /* Shared Header - start */
+.doc {
+  margin-top: 122px;
+}
+
+@media screen and (max-width: 992px) {
+  .doc {
+    margin-top: 76px;
+  }
+  .toolbar {
+    top: 76px;
+    margin-top: 10px;
+  }
+  .nav {
+    margin-top: 60px;
+  }
+}
+
 .nav {
   top: 6.8rem;
   -webkit-box-shadow: none;
@@ -1386,3 +1427,12 @@ shared-header {
 }
 
 /* Shared Header - end */
+
+/* Ensure main content area fills viewport minus header */
+.body, main > .content {
+  min-height: calc(100vh - 2.2rem); /* 2.2rem is the sharedheader height, I think */
+}
+
+:root {
+  font-variant-ligatures: none;
+}
