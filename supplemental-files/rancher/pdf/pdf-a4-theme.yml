@@ -23,6 +23,31 @@ font:
       bold: static/SUSEMono-Bold.ttf
       italic: static/SUSEMono-Regular.ttf
       bold_italic: static/SUSEMono-Bold.ttf
+    NOTOSANS-JP:
+      regular: static/NotoSansJP-Regular.ttf
+      bold: static/NotoSansJP-Bold.ttf
+      italic: static/NotoSansJP-Regular.ttf
+      bold_italic: static/NotoSansJP-Bold.ttf
+    NOTOSANS-KR:
+      regular: static/NotoSansKR-Regular.ttf
+      bold: static/NotoSansKR-Bold.ttf
+      italic: static/NotoSansKR-Regular.ttf
+      bold_italic: static/NotoSansKR-Bold.ttf
+    NOTOSANS-TC:
+      regular: static/NotoSansTC-Regular.ttf
+      bold: static/NotoSansTC-Bold.ttf
+      italic: static/NotoSansTC-Regular.ttf
+      bold_italic: static/NotoSansTC-Bold.ttf
+    NOTOSANS-SC:
+      regular: static/NotoSansSC-Regular.ttf
+      bold: static/NotoSansSC-Bold.ttf
+      italic: static/NotoSansSC-Regular.ttf
+      bold_italic: static/NotoSansSC-Bold.ttf
+  fallbacks:
+  - NOTOSANS-JP
+  - NOTOSANS-KR
+  - NOTOSANS-TC
+  - NOTOSANS-SC
 
 base:
   font-family: SUSE
@@ -33,5 +58,13 @@ heading:
   font: bold
 
 code:
+  font-family: SUSEMono
+  font: regular
+
+pre.highlight:
+  font-family: SUSEMono
+  font: regular
+
+codespan:
   font-family: SUSEMono
   font: regular
