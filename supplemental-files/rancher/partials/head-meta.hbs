@@ -71,3 +71,47 @@ Pass `langExistsFor four parameters:
 <!-- Link for the Brazilian Portuguese page -->
 <link href="https://documentation.suse.com/cloudnative{{hrefLang page.url 'pt-br' this}}" hreflang="pt-BR" rel="alternate" />
 {{/if}}
+
+<!-- JSON-LD for doc metadata -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "name": "{{page.title}} | {{projData 'fullTitle' this page.attributes.project-data}} {{page.componentVersion.displayVersion}}",
+  "headline": "{{page.title}}",
+{{#if page.description}}
+  "description": "{{page.description}}",
+{{else}}
+  "description": "{{page.title}}",
+{{/if}}
+  "inLanguage": "{{langFromUrl page.url 'headerlang' this}}",
+  "dateModified": "{{page.attributes.revdate}}",
+  "author": {
+    "@type": "Organization",
+{{#if page.attributes.author}}
+    "name": "{{page.attributes.author}}"
+{{else}}
+    "name": "{{{page.attributes.rancher-author}}}"
+{{/if}}
+  },
+  "mentions": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "{{projData 'fullTitle' this page.attributes.project-data}}",
+      "softwareVersion": "{{page.componentVersion.displayVersion}}",
+      "applicationCategory": "Cloud Infrastructure",
+      "operatingSystem": "Linux"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "SUSE",
+    "url": "https://documentation.suse.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.suse.com/assets/img/suse-white-logo-green.svg"
+    }
+  }
+}
+</script>
+<!-- end JSON-LD for doc metadata -->
