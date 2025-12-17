@@ -3,7 +3,7 @@
 const dprint = (...args) => {
   const debug = false;
   if (debug)
-    console.log(...args);
+    console.log('Inside projData', ...args);
 }
 
 const get_project_code = (url) => url.split('/')[1] || null
@@ -22,6 +22,8 @@ module.exports = (request, nav, projectData) => {
       return project.title || null;
     case 'url':
       return project.url || null;
+    case 'fullTitle':
+      return project.fullTitle || project.title || null;
     default:
       return null;
   }
