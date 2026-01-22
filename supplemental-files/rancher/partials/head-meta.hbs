@@ -77,7 +77,7 @@ Pass `langExistsFor four parameters:
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "name": "{{page.title}} | {{projData 'fullTitle' this page.attributes.project-data}} {{page.componentVersion.displayVersion}}",
+  "name": "{{page.title}} | {{projData 'fullTitle' this page.attributes.project-data}} {{page.componentVersion.version}}",
   "headline": "{{page.title}}",
 {{#if page.description}}
   "description": "{{page.description}}",
@@ -85,14 +85,15 @@ Pass `langExistsFor four parameters:
   "description": "{{page.title}}",
 {{/if}}
   "inLanguage": "{{langFromUrl page.url 'headerlang' this}}",
-  "dateModified": "{{page.attributes.revdate}}",
+  "dateModified": "{{page.attributes.revdate}}T00:00:00Z",
   "author": {
     "@type": "Organization",
 {{#if page.attributes.author}}
-    "name": "{{page.attributes.author}}"
+    "name": "{{page.attributes.author}}",
 {{else}}
-    "name": "{{{page.attributes.rancher-author}}}"
+    "name": "{{{page.attributes.rancher-author}}}",
 {{/if}}
+    "url": "{{{page.attributes.rancher-author-url}}}"
   },
   "mentions": [
     {
