@@ -129,19 +129,29 @@
     document.head.appendChild(link);
   }
 
+  function normalizeLanguageCode (code) {
+    if (!code) return ''
+    const normalized = String(code).trim().toLowerCase().replace(/_/g, '-');
+    const base = normalized.split('-')[0];
+    if (base === 'pt') return 'pt'
+    if (base === 'zh') return 'zh'
+    return base
+  }
+
   function getCurrentPageLanguage () {
     const htmlLang = (document.documentElement.getAttribute('lang') || '').trim().toLowerCase();
-    if (htmlLang) return htmlLang.split('-')[0]
+    if (htmlLang) return normalizeLanguageCode(htmlLang)
     const path = (globalThis.location && globalThis.location.pathname) || '';
     const match = path.match(/^\/[^/]+\/[^/]+\/([^/]+)\//);
-    return match ? match[1].toLowerCase() : ''
+    return match ? normalizeLanguageCode(match[1]) : ''
   }
 
   function getDocumentLanguage (doc) {
     const url = doc && doc.url;
     if (!url) return ''
     const match = url.match(/^\/[^/]+\/[^/]+\/([^/]+)\//);
-    return match ? match[1].toLowerCase() : ''
+    if (match) return normalizeLanguageCode(match[1])
+    return normalizeLanguageCode(doc && doc.lang)
   }
 
   function highlightPageTitle (title, terms) {
