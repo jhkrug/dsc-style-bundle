@@ -30,9 +30,9 @@ module.exports = (pageurl, type, nav) => {
 		return langToHreflangMapping[lang] || null;
 	} else if (type === "headerlang") {
 		if (lang.toLowerCase() === "zh") {
-			return "zh_cn";
+			return "zh_CN";
 		} else if (lang.toLowerCase() === "pt") {
-			return "pt_br";
+			return "pt_BR";
 		} else {
 			return lang;
 		}
