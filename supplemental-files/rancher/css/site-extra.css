@@ -1492,3 +1492,13 @@ shared-header {
 :root {
   font-variant-ligatures: none;
 }
+
+.toc-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#qualtrics_container {
+  order: 99; /* Higher order pushes it to the bottom */
+  margin-top: 1.5rem; /* Adds the requested line gap */
+}
