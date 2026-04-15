@@ -1492,9 +1492,3 @@ shared-header {
 :root {
   font-variant-ligatures: none;
 }
-
-/* For the qualtrics 5star */
-.toc-menu {
-  display: flex ;
-  flex-direction: column-reverse;
-}
