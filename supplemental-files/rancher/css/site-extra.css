@@ -1484,23 +1484,30 @@ shared-header {
 
 /* Shared Header - end */
 
+
 /* Ensure main content area fills viewport minus header */
 .body, main > .content {
   min-height: calc(100vh - 2.2rem); /* 2.2rem is the sharedheader height, I think */
 }
 
+/* Ensure we don't get code ligatures in code blocks,
+   which when copy/pasted are wrong */
 :root {
   font-variant-ligatures: none;
 }
 
+/* Start Qualtrics 5star additions
+   Helped by Google Chrome Inspect Mode AI chat to finally work it out. */
 .toc-menu {
   display: flex;
   flex-direction: column;
 }
 
 #qualtrics_container {
-  order: 99; /* Higher order pushes it to the bottom */
-  margin-top: 1.5rem; /* Adds the requested line gap */
+  order: 99;
+  /* Higher order pushes it to the bottom. More than 99 entries?
+     Time to rethink the information structure */
+  margin-top: 1.5rem;
 }
 
 /* 1. Ensure the container's font-size is zero to hide the original text node */
@@ -1536,3 +1543,4 @@ html[lang="ja"] .QSI__EmbeddedFeedbackContainer_QuestionText::before {
 html[lang="pt_BR"] .QSI__EmbeddedFeedbackContainer_QuestionText::before {
   content: "Isso foi útil?" !important;
 }
+/* End Qualtrics 5star additions */
