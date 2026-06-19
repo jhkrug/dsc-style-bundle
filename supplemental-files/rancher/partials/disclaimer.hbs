@@ -1,6 +1,8 @@
-{{> disclaimer_de}}
-{{> disclaimer_es}}
-{{> disclaimer_fr}}
-{{> disclaimer_ja}}
-{{> disclaimer_pt-br}}
-{{> disclaimer_zh-cn}}
+{{#if (isComponentRootPageForLang page.url page.componentVersion.url)}}
+    {{> disclaimer_de}}
+    {{> disclaimer_es}}
+    {{> disclaimer_fr}}
+    {{> disclaimer_ja}}
+    {{> disclaimer_pt-br}}
+    {{> disclaimer_zh-cn}}
+{{/if}}
