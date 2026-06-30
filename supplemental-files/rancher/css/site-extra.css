@@ -1549,18 +1549,34 @@ aside.toc.sidebar:not(.docsurvey-sidebar) ~ aside.docsurvey-sidebar {
   display: none;
 }
 
-/* On mobile the base UI hides every "toc sidebar" aside, which would also hide
-   the survey. Keep the survey-only fallback aside visible (the full "On this
-   page" list stays hidden) so the survey appears on every page at every width. */
+/* Mobile (< 1024px): the base UI hides every "toc sidebar" aside (so the real
+   "On this page" aside and our fallback are both hidden) but it SHOWS Antora's
+   inline "aside.toc.embedded" clone, which already contains a copy of the
+   survey rendered neatly after the page title. We rely on that clone for the
+   survey on pages that have sections, so nothing extra is needed there.
+   The only gap is section-less pages: those have no embedded clone and the real
+   TOC aside is removed by Antora's JS, leaving just our fallback aside (which
+   the base UI has hidden). Re-show the fallback in that case only. The dedup
+   rule above (higher specificity) keeps it hidden whenever a real TOC precedes
+   it, so section pages still show the single embedded copy. */
 @media screen and (max-width: 1023.5px) {
-  aside.toc.sidebar.docsurvey-sidebar,
-  aside.toc.sidebar:not(.docsurvey-sidebar) ~ aside.docsurvey-sidebar {
+  aside.toc.sidebar.docsurvey-sidebar {
     display: block;
   }
 
-  aside.docsurvey-sidebar .toc-menu {
+  /* Override the sticky ".toc.sidebar .toc-menu" so the survey sits in normal
+     flow instead of sticking up under the fixed shared-header. */
+  aside.toc.sidebar.docsurvey-sidebar .toc-menu {
     position: static;
     margin: 1rem;
+  }
+
+  /* Tighten the gap above the survey (it inherits a top margin from
+     .docsurvey-wrapper) and add space below it before the "On this page"
+     heading in Antora's inline embedded TOC clone. */
+  aside.toc.embedded .docsurvey-wrapper {
+    margin-top: 0.25rem;
+    margin-bottom: 1rem;
   }
 }
 
