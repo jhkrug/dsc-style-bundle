@@ -465,6 +465,11 @@ img.langIcon.korea {
   /* Added to make the hover color size more evenly. */
 }
 
+.docsurvey-sidebar .toc-menu a {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
 .toc .toc-menu a {
   border-left: unset;
 }
@@ -1123,6 +1128,7 @@ div#toctitle {
   .navbar> :not(.navbar-brand),
   .toolbar,
   aside.toc,
+  aside.docsurvey-sidebar,
   nav.pagination {
     display: none;
   }
@@ -1538,6 +1544,40 @@ nav.pagination a {
   margin-right: .75rem;
   position: sticky;
   top: 9.4rem;
+}
+
+.docsurvey-sidebar .toc-menu {
+  margin-right: .75rem;
+  position: sticky;
+  top: 9.4rem;
+}
+
+aside.docsurvey-sidebar {
+  display: none;
+}
+
+@media screen and (max-width: 1023.5px) {
+  aside.docsurvey-sidebar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  aside.docsurvey-sidebar {
+    display: block;
+    flex: 0 0 9rem;
+    order: 1;
+  }
+
+  main > .content > aside.docsurvey-sidebar:not(:first-child) {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1216px) {
+  aside.docsurvey-sidebar {
+    flex-basis: 12rem;
+  }
 }
 
 shared-header {
