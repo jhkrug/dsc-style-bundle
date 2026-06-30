@@ -465,11 +465,6 @@ img.langIcon.korea {
   /* Added to make the hover color size more evenly. */
 }
 
-.docsurvey-sidebar .toc-menu a {
-  padding-top: 10px;
-  padding-right: 10px;
-}
-
 .toc .toc-menu a {
   border-left: unset;
 }
@@ -1128,7 +1123,6 @@ div#toctitle {
   .navbar> :not(.navbar-brand),
   .toolbar,
   aside.toc,
-  aside.docsurvey-sidebar,
   nav.pagination {
     display: none;
   }
@@ -1546,37 +1540,27 @@ nav.pagination a {
   top: 9.4rem;
 }
 
-.docsurvey-sidebar .toc-menu {
-  margin-right: .75rem;
-  position: sticky;
-  top: 9.4rem;
-}
-
-aside.docsurvey-sidebar {
+/* The fallback survey sidebar (.docsurvey-sidebar) carries the same
+   "toc sidebar" classes as the real "On this page" aside, so it inherits all
+   TOC layout/sizing/visibility rules. Antora's JS removes the real TOC aside
+   on pages that have no sections; when that aside is still present we hide the
+   fallback so the survey only ever renders once. */
+aside.toc.sidebar:not(.docsurvey-sidebar) ~ aside.docsurvey-sidebar {
   display: none;
 }
 
+/* On mobile the base UI hides every "toc sidebar" aside, which would also hide
+   the survey. Keep the survey-only fallback aside visible (the full "On this
+   page" list stays hidden) so the survey appears on every page at every width. */
 @media screen and (max-width: 1023.5px) {
-  aside.docsurvey-sidebar {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  aside.docsurvey-sidebar {
+  aside.toc.sidebar.docsurvey-sidebar,
+  aside.toc.sidebar:not(.docsurvey-sidebar) ~ aside.docsurvey-sidebar {
     display: block;
-    flex: 0 0 9rem;
-    order: 1;
   }
 
-  main > .content > aside.docsurvey-sidebar:not(:first-child) {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1216px) {
-  aside.docsurvey-sidebar {
-    flex-basis: 12rem;
+  aside.docsurvey-sidebar .toc-menu {
+    position: static;
+    margin: 1rem;
   }
 }
 
