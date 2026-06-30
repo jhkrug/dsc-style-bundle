@@ -1432,15 +1432,23 @@ nav.pagination a {
 }
 
 .docsurvey-wrapper a.survey-link {
+  background-color: transparent !important;
   color: #fff !important;
   display: block;
   line-height: 1.2;
   text-decoration: none;
 }
 
+.docsurvey-wrapper a.survey-link:link,
+.docsurvey-wrapper a.survey-link:visited,
+.docsurvey-wrapper a.survey-link:active {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
 .docsurvey-wrapper a.survey-link:hover,
-.docsurvey-wrapper a.survey-link:focus {
-  background-color: transparent;
+.docsurvey-wrapper a.survey-link:focus-visible {
+  background-color: transparent !important;
   color: #fff !important;
   text-decoration: underline;
 }
