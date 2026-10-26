@@ -1,28 +1,46 @@
+{{!-- Groups come from the component-hierarchy.yml partials. See helpers/componenthierarchy.js. --}}
+{{#*inline "component-node"}}
+<li class="component{{#if isCurrent}} is-current{{/if}}{{#if children.length}} component-group{{#if expanded}} is-expanded{{/if}}{{/if}}" data-component="{{name}}">
+  {{#if children.length}}
+  <div class="component-group-header">
+    <button type="button" class="component-group-toggle" aria-expanded="{{#if expanded}}true{{else}}false{{/if}}" aria-controls="component-children-{{name}}" aria-label="Show or hide the {{title}} components"><span class="component-group-icon" aria-hidden="true"></span></button>
+    <div class="title"><a href="{{{relativize component.url}}}">{{{title}}}</a></div>
+  </div>
+  {{else}}
+  <div class="title"><a href="{{{relativize component.url}}}">{{{title}}}</a></div>
+  {{/if}}
+  {{#if includeVersions}}
+  {{#if (or component.versions.[1] component.versions.[0].version (ne component.versions.[0].displayVersion 'default'))}}
+  <ul class="versions">
+    {{#each component.versions}}
+    <li class="version
+      {{~#if (eq this @root.page.componentVersion)}} is-current{{/if~}}
+      {{~#if (eq this ../component.latest)}} is-latest{{/if}}">
+      <a href="{{{relativize ./url}}}">{{./displayVersion}}</a>
+    </li>
+    {{/each}}
+  </ul>
+  {{/if}}
+  {{/if}}
+  {{#if children.length}}
+  <ul class="component-children" id="component-children-{{name}}">
+    {{#each children}}
+    {{> component-node}}
+    {{/each}}
+  </ul>
+  {{/if}}
+</li>
+{{/inline}}
 <div class="nav-panel-explore{{#unless page.navigation}} is-active{{/unless}}" data-panel="explore">
   {{#if page.component}}
   <div class="context">
     <span class="title">{{page.component.title}}</span>
-    <span class="version">{{#if (or page.componentVersion.version (ne page.componentVersion.displayVersion 'default'))}}{{page.componentVersion.displayVersion}}{{/if}}</span>
+    <span class="version">{{#if (componenthierarchy site.components page.component showVersion=true)}}{{#if (or page.componentVersion.version (ne page.componentVersion.displayVersion 'default'))}}{{page.componentVersion.displayVersion}}{{/if}}{{/if}}</span>
   </div>
   {{/if}}
   <ul class="components">
-    {{#each site.components}}
-      {{#unless (eq ./name 'shared')}}
-        <li class="component{{#if (eq this @root.page.component)}} is-current{{/if}}">
-          <div class="title"><a href="{{{relativize ./url}}}">{{{./title}}}</a></div>
-          {{#if (or ./versions.[1] ./versions.[0].version (ne ./versions.[0].displayVersion 'default'))}}
-          <ul class="versions">
-            {{#each ./versions}}
-            <li class="version
-              {{~#if (and (eq .. @root.page.component) (eq this @root.page.componentVersion))}} is-current{{/if~}}
-              {{~#if (eq this ../latest)}} is-latest{{/if}}">
-              <a href="{{{relativize ./url}}}">{{./displayVersion}}</a>
-            </li>
-            {{/each}}
-          </ul>
-          {{/if}}
-        </li>
-      {{/unless}}
+    {{#each (componenthierarchy site.components page.component)}}
+    {{> component-node}}
     {{/each}}
   </ul>
 </div>

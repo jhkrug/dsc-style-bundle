@@ -1683,3 +1683,299 @@ button.version-menu-toggle {
   color: #0c322c !important;
   font-weight: 500 !important;
 }
+
+/* Start left navigation expand/collapse all button.
+   js/nav-menu-toggle.js shows it. The bundle site.css has no rules for it. */
+.nav-menu-toggle {
+  position: sticky;
+  top: 0.5rem;
+  z-index: 1;
+  float: right;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: 0.25rem 0.5rem 0 0.5rem;
+  padding: 0.25rem;
+  color: #0c322c;
+  background: #fff;
+  border: 1px solid #c0c2c4;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.nav-menu-toggle svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.nav-menu-toggle:hover {
+  color: #008657;
+  border-color: #008657;
+  background: #eafaf4;
+}
+
+.nav-menu-toggle:focus-visible {
+  outline: 2px solid #008657;
+  outline-offset: 2px;
+}
+
+.nav-menu-toggle .nav-fold-icon,
+.nav-menu-toggle.is-active .nav-unfold-icon {
+  display: none;
+}
+
+.nav-menu-toggle.is-active .nav-fold-icon {
+  display: inline;
+}
+/* End left navigation expand/collapse all button */
+
+/* Start component hierarchy in the "Component / version" selector.
+   Groups come from the component-hierarchy.yml partials. */
+.nav-panel-explore .component-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: -0.35rem;
+}
+
+.nav-panel-explore .component-group-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.25rem;
+  background: none;
+  color: #0c322c;
+  cursor: pointer;
+}
+
+.nav-panel-explore .component-group-toggle:hover {
+  color: #008657;
+  background: #eafaf4;
+}
+
+.nav-panel-explore .component-group-toggle:focus-visible {
+  outline: 2px solid #008657;
+  outline-offset: 1px;
+}
+
+.nav-panel-explore .component-group-icon {
+  display: block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-top: -0.2rem;
+  border-right: 1.5px solid currentColor;
+  border-top: 1.5px solid currentColor;
+  transform: rotate(135deg);
+  transition: transform 0.15s ease;
+}
+
+.nav-panel-explore .component-group:not(.is-expanded) > .component-group-header .component-group-icon {
+  margin: 0 0.1rem 0 0;
+  transform: rotate(45deg);
+}
+
+.nav-panel-explore .component-children {
+  list-style: none;
+  margin: 0.5rem 0 0 0.4rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid #c0c2c4;
+}
+
+.nav-panel-explore .component-group:not(.is-expanded) > .component-children {
+  display: none;
+}
+
+/* Only top-level components have a separator line. */
+.nav-panel-explore .component-children > .component + .component {
+  border-top-style: none;
+}
+
+/* The bundle styles every version link inside a current component as current.
+   Nested components need the current style on the current version only. */
+.nav-panel-explore .component .version:not(.is-current) a {
+  border-color: #c1c1c1;
+  opacity: 0.75;
+  font-weight: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-panel-explore .component-group-icon {
+    transition: none;
+  }
+}
+/* End component hierarchy */
+
+/* Start Kubewarden landing page (page role kw-landing). */
+.kw-landing {
+  --kw-accent: #008657;
+  --kw-text: #0c322c;
+  --kw-border: #c0c2c4;
+  --kw-tint: #eafaf4;
+}
+
+.kw-landing .landing-hero {
+  margin: 1rem 0 0;
+  padding: 2rem 2.25rem;
+  border: 1px solid var(--kw-border);
+  border-radius: 0.75rem;
+  background: radial-gradient(ellipse at top right, var(--kw-tint), transparent 75%), #fff;
+}
+
+.kw-landing .landing-hero .paragraph {
+  margin: 0;
+}
+
+.kw-landing .landing-eyebrow {
+  color: var(--kw-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.kw-landing .doc .landing-hero h1 {
+  margin: 0.75rem 0 0.25rem;
+  padding: 0;
+  background: none;
+  color: var(--kw-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.kw-landing .doc .landing-tagline p {
+  color: var(--kw-accent);
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.kw-landing .landing-hero .paragraph:last-child {
+  max-width: 38rem;
+  margin-top: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.kw-landing .doc .component-grid {
+  margin-top: 2.25rem;
+}
+
+.kw-landing .component-grid > .sectionbody {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.kw-landing .component-grid > .sectionbody > .paragraph {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.kw-landing .component-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--kw-border);
+  border-radius: 0.75rem;
+  background: #fff;
+  transition: border-color 150ms ease;
+}
+
+.kw-landing .component-card:hover,
+.kw-landing .component-card:focus-within {
+  border-color: var(--kw-accent);
+}
+
+.kw-landing .doc .component-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.kw-landing .component-card h3::before {
+  content: "";
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 1rem;
+  background: var(--kw-accent);
+  mask: var(--kw-component-icon) center / contain no-repeat;
+}
+
+.kw-landing .admission-card { --kw-component-icon: url("../img/kw-component-admission.svg"); }
+.kw-landing .sbom-card { --kw-component-icon: url("../img/kw-component-sbom.svg"); }
+.kw-landing .runtime-card { --kw-component-icon: url("../img/kw-component-runtime.svg"); }
+.kw-landing .network-card { --kw-component-icon: url("../img/kw-component-network.svg"); }
+
+.kw-landing .component-card > .paragraph {
+  margin: 0.75rem 0 1.25rem;
+  line-height: 1.5;
+}
+
+.kw-landing .component-card .card-links {
+  margin-top: auto;
+}
+
+.kw-landing .card-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kw-landing .doc .card-links li {
+  margin: 0;
+}
+
+.kw-landing .doc .card-links li p {
+  margin: 0;
+}
+
+.kw-landing .card-links a {
+  display: inline-block;
+  padding: 0.25rem 0;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.kw-landing .card-links a:hover {
+  text-decoration: underline;
+}
+
+.kw-landing .card-links li:first-child a::after {
+  content: " →";
+}
+
+@media screen and (max-width: 600px) {
+  .kw-landing .landing-hero {
+    padding: 1.5rem;
+  }
+
+  .kw-landing .component-grid > .sectionbody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media print {
+  .kw-landing .landing-hero {
+    background: none;
+  }
+
+  .kw-landing .component-card {
+    break-inside: avoid;
+  }
+
+  .kw-landing .component-card h3::before {
+    display: none;
+  }
+}
+/* End Kubewarden landing page */
