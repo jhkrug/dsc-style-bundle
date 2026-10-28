@@ -189,3 +189,46 @@ test('with the release layout, a later release links to a shared version through
     ['/suse-security/6.0.0/en/admission-controller/introduction.html', '/suse-security/6.0.0/en/network-enforcer/introduction.html'],
   ])
 })
+
+test('the page context names the releases of the latest and dev aliases', () => {
+  const components = site()
+  const ac = find(components, 'admission-controller')
+  const r610 = { version: '6.1.0', prerelease: true, components: { 'admission-controller': '1.39' } }
+  assert.deepEqual(pageContext([product(components, r601, r600)], ac, ac.versions[1]).aliases, { latest: '6.0.1', dev: '' })
+  assert.deepEqual(pageContext([product(components, r610, r601, r600)], ac, ac.versions[1]).aliases, { latest: '6.0.1', dev: '6.1.0' })
+  assert.deepEqual(pageContext([product(components, r610)], ac, ac.versions[0]).aliases, { latest: '', dev: '6.1.0' })
+})
+
+// Runs js/product-release.js on a page at a path, with the release options
+// 6.0.1 and 6.0.0, and the aliases latest: 6.0.1 and dev: 6.1.0 (no option).
+// Returns the current options and the shown component lists.
+function runReleaseScript (pathname) {
+  const fs = require('node:fs')
+  const vm = require('node:vm')
+  const path = require('node:path')
+  const element = (dataset) => ({ dataset, hidden: false, textContent: '', classList: { toggle (name, on) { this.on = on } } })
+  const context = element({ releasePrefix: 'suse-security', releaseLatest: '6.0.1', releaseDev: '6.1.0' })
+  const options = ['6.0.1', '6.0.0'].map((version) => element({ releaseOption: version, releaseLabel: version }))
+  options[1].classList.on = true
+  const lists = ['6.0.1', '6.0.0'].map((version) => element({ releaseComponents: version }))
+  const current = element({})
+  const document = {
+    querySelector: (selector) => (selector === '[data-release-prefix]' ? context : null),
+    querySelectorAll: (selector) => ({ '[data-release-option]': options, '[data-release-components]': lists, '[data-release-current]': [current] })[selector] || [],
+  }
+  const script = fs.readFileSync(path.join(__dirname, '../supplemental-files/rancher/js/product-release.js'), 'utf8')
+  vm.runInNewContext(script, { document, window: { location: { pathname } } })
+  return {
+    current: options.filter((it) => it.classList.on).map((it) => it.dataset.releaseOption),
+    shown: lists.filter((it) => !it.hidden).map((it) => it.dataset.releaseComponents),
+    label: current.textContent,
+  }
+}
+
+test('the release script marks the release of the URL, and of the latest alias', () => {
+  assert.deepEqual(runReleaseScript('/suse-security/6.0.1/en/admission-controller/x.html'), { current: ['6.0.1'], shown: ['6.0.1'], label: '6.0.1' })
+  assert.deepEqual(runReleaseScript('/suse-security/latest/en/admission-controller/x.html'), { current: ['6.0.1'], shown: ['6.0.1'], label: '6.0.1' })
+  assert.deepEqual(runReleaseScript('/cloudnative/suse-security/latest/en/introduction.html'), { current: ['6.0.1'], shown: ['6.0.1'], label: '6.0.1' })
+  // No option for the release: the page keeps the release it was built under.
+  assert.deepEqual(runReleaseScript('/suse-security/dev/en/introduction.html'), { current: ['6.0.0'], shown: ['6.0.1', '6.0.0'], label: '' })
+})

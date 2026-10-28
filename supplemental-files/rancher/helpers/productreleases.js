@@ -143,7 +143,18 @@ function resolveProduct (product, byName) {
     }
   })
   const newest = releases.find((release) => !release.prerelease) || releases[0]
-  return { ...product, title: landing.title, landing, releases, newest }
+  return { ...product, title: landing.title, landing, releases, newest, aliases: aliases(releases) }
+}
+
+// The releases that the release-url-layout extension links to from
+// /<url_prefix>/latest and /<url_prefix>/dev: the newest release that is not a
+// prerelease, and the newest prerelease. Empty strings for an alias without a
+// release.
+function aliases (releases) {
+  return {
+    latest: releases.find((release) => !release.prerelease)?.version || '',
+    dev: releases.find((release) => release.prerelease)?.version || '',
+  }
 }
 
 // The release of the current page: the release of a landing copy, the home of
@@ -246,6 +257,7 @@ function pageContext (products, currentComponent, currentVersion) {
     label: release.label,
     version: release.version,
     urlPrefix: product.urlPrefix,
+    aliases: product.aliases,
     releases: releaseOptions(product, release),
   }
 }
