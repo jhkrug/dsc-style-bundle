@@ -168,6 +168,39 @@ function releaseOptions (product, current) {
   }))
 }
 
+// The URL of a pinned component version in a release. A component version that
+// several releases pin is published once, under the oldest of them (its home).
+// With the release-url-layout extension, the other releases reach it through
+// their own path, /<url_prefix>/<release>/..., so the link stays in the release.
+function releaseUrl (product, release, componentVersion) {
+  const pinning = product.releases.filter((it) => [...it.pins.values()].includes(componentVersion))
+  const home = pinning[pinning.length - 1]
+  const homePath = `/${product.urlPrefix}/${home.version}/`
+  const url = componentVersion.url
+  if (home === release || typeof url !== 'string' || !url.startsWith(homePath)) return url
+  return `/${product.urlPrefix}/${release.version}/${url.slice(homePath.length)}`
+}
+
+// For each release, links to the start pages of the component versions it pins,
+// in the order of the release config. The list of the current release shows;
+// js/product-release.js shows the list of the release in the URL instead.
+// The closed list shows the current component, or "Components".
+function componentLists (product, shown, currentComponent) {
+  return product.releases.map((release) => {
+    const components = [...release.pins].map(([name, componentVersion]) => ({
+      title: componentVersion.title,
+      url: releaseUrl(product, release, componentVersion),
+      isCurrent: currentComponent?.name === name,
+    }))
+    return {
+      version: release.version,
+      isShown: release === shown,
+      label: components.find((it) => it.isCurrent)?.title || 'Components',
+      components,
+    }
+  })
+}
+
 function selectorEntries (components, products, currentComponent, currentVersion) {
   const productOf = new Map()
   for (const product of products) for (const name of product.componentNames) productOf.set(name, product)
@@ -190,6 +223,7 @@ function selectorEntries (components, products, currentComponent, currentVersion
       url: (current || product.newest).landingVersion.url,
       isCurrent: Boolean(current),
       releases: releaseOptions(product, current),
+      componentLists: componentLists(product, current || product.newest, currentComponent),
     })
   }
   return entries
@@ -269,3 +303,4 @@ module.exports.resolveProduct = resolveProduct
 module.exports.selectorEntries = selectorEntries
 module.exports.pageContext = pageContext
 module.exports.pageMenu = pageMenu
+module.exports.componentLists = componentLists

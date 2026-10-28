@@ -1756,6 +1756,81 @@ button.version-menu-toggle {
   display: block;
   font-weight: 700;
 }
+/* A dropdown below the releases: links to the component versions of the
+   release. The closed dropdown shows the current component. */
+.nav-panel-explore .product-components {
+  margin: 0.5rem 0 0;
+}
+
+.nav-panel-explore .product-components[hidden] {
+  display: none;
+}
+
+.nav-panel-explore .product-components > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.125em 0.4em;
+  border: 1px solid #c1c1c1;
+  border-radius: 0.25rem;
+  color: #025937;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.nav-panel-explore .product-components > summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-panel-explore .product-components > summary::after {
+  content: "";
+  width: 0.4em;
+  height: 0.4em;
+  margin-top: -0.2em;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.nav-panel-explore .product-components[open] > summary::after {
+  margin-top: 0.2em;
+  transform: rotate(225deg);
+}
+
+.nav-panel-explore .product-components > summary:hover {
+  border-color: #025937;
+}
+
+.nav-panel-explore .product-components > summary:focus-visible {
+  outline: 2px solid #008657;
+  outline-offset: 2px;
+}
+
+.nav-panel-explore .product-components > ul {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+}
+
+.nav-panel-explore .product-component {
+  margin-top: 0.25rem;
+}
+
+.nav-panel-explore .product-component a {
+  display: inline-block;
+  padding: 0.125em 0.4em;
+  color: #025937;
+  text-decoration: none;
+}
+
+.nav-panel-explore .product-component a:hover {
+  text-decoration: underline;
+}
+
+.nav-panel-explore .product-component.is-current a {
+  font-weight: 600;
+}
 /* End product releases */
 
 /* Start Kubewarden landing page (page role kw-landing). */

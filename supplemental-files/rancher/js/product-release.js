@@ -15,6 +15,9 @@
   const selected = options.filter((option) => option.dataset.releaseOption === release);
   if (!selected.length) return;
   options.forEach((option) => option.classList.toggle('is-current', selected.includes(option)));
+  document.querySelectorAll('[data-release-components]').forEach((list) => {
+    list.hidden = list.dataset.releaseComponents !== release;
+  });
   const label = selected[0].dataset.releaseLabel;
   document.querySelectorAll('[data-release-current]').forEach((element) => { element.textContent = label; });
 })();
