@@ -9,7 +9,7 @@ const { loadProducts, validateConfig, resolveProduct, selectorEntries, pageConte
 // Antora-like components. A version is { version, prerelease, url }.
 const component = (name, title, ...versions) => {
   const list = versions.map((it) => (typeof it === 'string' ? { version: it } : it))
-    .map((it) => ({ ...it, displayVersion: it.version, url: `/${name}/${it.version}/en/introduction.html` }))
+    .map((it) => ({ ...it, title, displayVersion: it.version, url: `/${name}/${it.version}/en/introduction.html` }))
   return { name, title, versions: list, latest: list.find((it) => !it.prerelease) || list[0] }
 }
 const site = () => [
@@ -153,4 +153,39 @@ test('two products cannot share a component or a URL prefix', () => {
     /url_prefix suse-security is in/)
   assert.deepEqual(loadProducts(catalog(), JSON.parse), [])
   assert.deepEqual(loadProducts(catalog(file('x', 'notes.yml', {})), JSON.parse), [])
+})
+
+test('the selector lists the component versions of each release, the current release shown', () => {
+  const components = site()
+  const ac = find(components, 'admission-controller')
+  const [, suse] = selectorEntries(components, [product(components, r601, r600)], ac, ac.versions[1])
+  assert.deepEqual(suse.componentLists.map((list) => [list.version, list.isShown]), [['6.0.1', false], ['6.0.0', true]])
+  assert.deepEqual(suse.componentLists[1].components, [
+    { title: 'Admission Controller', url: '/admission-controller/1.38/en/introduction.html', isCurrent: true },
+    { title: 'Network Enforcer', url: '/network-enforcer/0.3/en/introduction.html', isCurrent: false },
+  ])
+  assert.equal(suse.componentLists[0].components[1].url, '/network-enforcer/0.4/en/introduction.html')
+  assert.deepEqual(suse.componentLists.map((list) => list.label), ['Admission Controller', 'Admission Controller'])
+  // On a page outside the product, the list of the newest release shows.
+  const k3s = find(components, 'k3s')
+  const [entry] = selectorEntries(components, [product(components, r601, r600)], k3s, k3s.versions[0]).filter((it) => it.product)
+  assert.deepEqual(entry.componentLists.map((list) => list.isShown), [true, false])
+  assert.deepEqual(entry.componentLists.map((list) => list.label), ['Components', 'Components'])
+})
+
+test('with the release layout, a later release links to a shared version through its own path', () => {
+  const components = site()
+  const layout = (name, version, release) => {
+    const componentVersion = find(components, name).versions.find((it) => it.version === version)
+    componentVersion.url = `/suse-security/${release}/en/${name}/introduction.html`
+  }
+  layout('admission-controller', '1.38', '6.0.0')
+  layout('network-enforcer', '0.3', '6.0.0')
+  layout('network-enforcer', '0.4', '6.0.1')
+  const ne = find(components, 'network-enforcer')
+  const [, suse] = selectorEntries(components, [product(components, r601, r600)], ne, ne.versions[0])
+  assert.deepEqual(suse.componentLists.map((list) => list.components.map((it) => it.url)), [
+    ['/suse-security/6.0.1/en/admission-controller/introduction.html', '/suse-security/6.0.1/en/network-enforcer/introduction.html'],
+    ['/suse-security/6.0.0/en/admission-controller/introduction.html', '/suse-security/6.0.0/en/network-enforcer/introduction.html'],
+  ])
 })

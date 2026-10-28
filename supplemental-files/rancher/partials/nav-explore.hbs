@@ -26,6 +26,17 @@
         </li>
         {{/each}}
       </ul>
+      {{!-- One dropdown for each release: links to the component versions it pins. js/product-release.js shows the dropdown of the release in the URL. --}}
+      {{#each componentLists}}
+      <details class="product-components" data-release-components="{{version}}"{{#unless isShown}} hidden{{/unless}}>
+        <summary>{{{label}}}</summary>
+        <ul>
+          {{#each components}}
+          <li class="product-component{{#if isCurrent}} is-current{{/if}}"><a href="{{{relativize url}}}">{{{title}}}</a></li>
+          {{/each}}
+        </ul>
+      </details>
+      {{/each}}
     </li>
     {{else}}
     <li class="component{{#if isCurrent}} is-current{{/if}}">
