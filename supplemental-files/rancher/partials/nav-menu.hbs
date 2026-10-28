@@ -1,5 +1,7 @@
 {{#with page.navigation}}
-<div class="nav-panel-menu is-active" data-panel="menu">
+{{!-- The landing page of a product opens all the sections of its navigation. See js/nav-menu-toggle.js. --}}
+<div class="nav-panel-menu is-active" data-panel="menu"
+  {{~#with (productreleases @root.site.components @root.page.component @root.page.componentVersion @root.page.url context=true)}}{{#if isLanding}} data-start-expanded{{/if}}{{/with}}>
   <nav class="nav-menu">
     {{!-- js/nav-menu-toggle.js shows this button. The bundle site.js does not handle it. --}}
     <button type="button" class="nav-menu-toggle" aria-label="Expand all navigation sections" title="Expand all navigation sections" style="display: none">

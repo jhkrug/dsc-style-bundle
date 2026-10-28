@@ -13,13 +13,16 @@
     toggle.title = label;
   };
 
-  toggle.addEventListener('click', () => {
-    const expand = !toggle.classList.contains('is-active');
+  const setExpanded = (expand) => {
     items().forEach(item => item.parentElement.classList.toggle('is-active', expand));
     toggle.classList.toggle('is-active', expand);
     update();
-  });
+  };
+
+  toggle.addEventListener('click', () => setExpanded(!toggle.classList.contains('is-active')));
 
   toggle.style.display = '';
-  update();
+  // A product landing page starts with all sections open.
+  if (menu.hasAttribute('data-start-expanded')) setExpanded(true);
+  else update();
 })();

@@ -1731,85 +1731,32 @@ button.version-menu-toggle {
 }
 /* End left navigation expand/collapse all button */
 
-/* Start component hierarchy in the "Component / version" selector.
-   Groups come from the component-hierarchy.yml partials. */
-.nav-panel-explore .component-group-header {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-left: -0.35rem;
+/* Start product releases in the "Component / version" selector and the
+   page version menu. See helpers/productreleases.js. */
+/* A page in a product: the product title above the component title. */
+.nav-panel-explore .context:has(.context-release) {
+  height: auto;
+  min-height: 2.5rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
 }
 
-.nav-panel-explore .component-group-toggle {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 0;
-  border: 0;
-  border-radius: 0.25rem;
-  background: none;
-  color: #0c322c;
-  cursor: pointer;
-}
-
-.nav-panel-explore .component-group-toggle:hover {
-  color: #008657;
-  background: #eafaf4;
-}
-
-.nav-panel-explore .component-group-toggle:focus-visible {
-  outline: 2px solid #008657;
-  outline-offset: 1px;
-}
-
-.nav-panel-explore .component-group-icon {
+.nav-panel-explore .context .context-release {
   display: block;
-  width: 0.4rem;
-  height: 0.4rem;
-  margin-top: -0.2rem;
-  border-right: 1.5px solid currentColor;
-  border-top: 1.5px solid currentColor;
-  transform: rotate(135deg);
-  transition: transform 0.15s ease;
+  margin-bottom: 0.2rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.nav-panel-explore .component-group:not(.is-expanded) > .component-group-header .component-group-icon {
-  margin: 0 0.1rem 0 0;
-  transform: rotate(45deg);
+/* The release menu also lists the current release, so that it is never
+   empty. The bundle hides the current version. */
+.page-versions-releases .version-menu .version.is-current {
+  display: block;
+  font-weight: 700;
 }
-
-.nav-panel-explore .component-children {
-  list-style: none;
-  margin: 0.5rem 0 0 0.4rem;
-  padding-left: 1.25rem;
-  border-left: 2px solid #c0c2c4;
-}
-
-.nav-panel-explore .component-group:not(.is-expanded) > .component-children {
-  display: none;
-}
-
-/* Only top-level components have a separator line. */
-.nav-panel-explore .component-children > .component + .component {
-  border-top-style: none;
-}
-
-/* The bundle styles every version link inside a current component as current.
-   Nested components need the current style on the current version only. */
-.nav-panel-explore .component .version:not(.is-current) a {
-  border-color: #c1c1c1;
-  opacity: 0.75;
-  font-weight: inherit;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .nav-panel-explore .component-group-icon {
-    transition: none;
-  }
-}
-/* End component hierarchy */
+/* End product releases */
 
 /* Start Kubewarden landing page (page role kw-landing). */
 .kw-landing {
