@@ -3,7 +3,7 @@
   {{#if page.component}}
   {{#with (productreleases site.components page.component page.componentVersion page.url context=true)}}
   {{!-- A page in a product: the product above the component title, and the release as the version. --}}
-  <div class="context" data-release-prefix="{{urlPrefix}}">
+  <div class="context" data-release-prefix="{{urlPrefix}}" data-release-latest="{{aliases.latest}}" data-release-dev="{{aliases.dev}}">
     <span class="title">{{#unless isLanding}}<span class="context-release">{{productTitle}}</span>{{/unless}}{{@root.page.component.title}}</span>
     <span class="version" data-release-current>{{label}}</span>
   </div>

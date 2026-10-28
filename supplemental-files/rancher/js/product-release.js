@@ -3,13 +3,16 @@
 // oldest of them. The other releases reach the same pages through their own
 // path, /<url_prefix>/<release>/..., so the page shows the release of its URL.
 // See helpers/productreleases.js. Without this script, the page shows the
-// release that it was built under.
+// release that it was built under. The aliases, /<url_prefix>/latest/ and
+// /<url_prefix>/dev/, stand for the releases that they link to.
 (() => {
   const context = document.querySelector('[data-release-prefix]');
   if (!context) return;
   const segments = window.location.pathname.split('/');
   const index = segments.indexOf(context.dataset.releasePrefix);
-  const release = index < 0 ? undefined : segments[index + 1];
+  const segment = index < 0 ? undefined : segments[index + 1];
+  const aliases = { latest: context.dataset.releaseLatest, dev: context.dataset.releaseDev };
+  const release = Object.prototype.hasOwnProperty.call(aliases, segment) ? aliases[segment] : segment;
   if (!release) return;
   const options = [...document.querySelectorAll('[data-release-option]')];
   const selected = options.filter((option) => option.dataset.releaseOption === release);
