@@ -1909,7 +1909,7 @@ button.version-menu-toggle {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 1.5rem;
+  padding: 1.25rem 1.5rem;
   border: 1px solid var(--kw-border);
   border-radius: 0.75rem;
   background: #fff;
@@ -1922,6 +1922,9 @@ button.version-menu-toggle {
 }
 
 .kw-landing .doc .component-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin: 0;
   font-size: 1.2rem;
 }
@@ -1929,9 +1932,9 @@ button.version-menu-toggle {
 .kw-landing .component-card h3::before {
   content: "";
   display: block;
+  flex: none;
   width: 1.75rem;
   height: 1.75rem;
-  margin-bottom: 1rem;
   background: var(--kw-accent);
   mask: var(--kw-component-icon) center / contain no-repeat;
 }
@@ -1942,44 +1945,28 @@ button.version-menu-toggle {
 .kw-landing .network-card { --kw-component-icon: url("../img/kw-component-network.svg"); }
 
 .kw-landing .component-card > .paragraph {
-  margin: 0.75rem 0 1.25rem;
+  margin: 0.75rem 0 0;
   line-height: 1.5;
 }
 
-.kw-landing .component-card .card-links {
-  margin-top: auto;
+.kw-landing .doc .component-card > .paragraph p {
+  margin-bottom: 0;
 }
 
-.kw-landing .card-links ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.kw-landing .doc .card-links li {
-  margin: 0;
-}
-
-.kw-landing .doc .card-links li p {
-  margin: 0;
-}
-
-.kw-landing .card-links a {
-  display: inline-block;
-  padding: 0.25rem 0;
-  font-weight: 600;
+/* The component name is the link of the card. The arrow, and the underline
+   when the card has the pointer or the link has the focus, show it. */
+.kw-landing .doc .component-card h3 a:not(.anchor) {
+  color: var(--kw-accent);
   text-decoration: none;
 }
 
-.kw-landing .card-links a:hover {
-  text-decoration: underline;
+.kw-landing .doc .component-card h3 a:not(.anchor)::after {
+  content: " →";
 }
 
-.kw-landing .card-links li:first-child a::after {
-  content: " →";
+.kw-landing .doc .component-card:hover h3 a:not(.anchor),
+.kw-landing .doc .component-card h3 a:not(.anchor):focus {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 600px) {
